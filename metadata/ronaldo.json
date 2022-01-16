@@ -1,0 +1,27 @@
+{
+    "name": "Cristiano Ronaldo",
+    "description": "5 Champions League, 5 Golder Ball, GOAT, The man keep highest score in history",
+    "image": "https://ipfs.io/ipfs/QmSek65eHNjUhusSCq5c42ZUU3f7f3TcSX14CFuC7DLuej",
+    "attributes": [
+        {
+            "trait_type": "Speed",
+            "value": 9,
+            "max_value":10
+        },
+        {
+            "trait_type": "Control",
+            "value": 8,
+            "max_value":10
+        },
+        {
+            "trait_type": "Acceleration",
+            "value": 10,
+            "max_value":10
+        },
+        {
+            "trait_type": "Sprit",
+            "value": 10,
+            "max_value":10
+        }
+    ]
+}
