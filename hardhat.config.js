@@ -29,13 +29,18 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
     testnet: {
       url: "https://data-seed-prebsc-1-s1.binance.org:8545",
       chainId: 97,
-      gasPrice: 20000000000,
+      gas: 2100000,
+      gasPrice: 8000000000,
       accounts: {mnemonic: "empty jewel nose viable pink leader mad review witness camp into expire"}
     },
     mainnet: {
       url: "https://bsc-dataseed.binance.org/",
       chainId: 56,
       gasPrice: 20000000000,
+      accounts: {mnemonic: "empty jewel nose viable pink leader mad review witness camp into expire"}
+    },
+    rinkeby: {
+      url: "https://speedy-nodes-nyc.moralis.io/3ff17d7d4b11fbfa8d5cb8fc/eth/rinkeby",
       accounts: {mnemonic: "empty jewel nose viable pink leader mad review witness camp into expire"}
     }
   },
