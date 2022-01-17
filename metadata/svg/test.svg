@@ -1,0 +1,11 @@
+'<svg width='300' height='300'>', 
+            string(abi.encodePacked('<rect x='0' y='0' width='100' height='100' style='fill:',palette[toUint8(bhash,0)/51],';stroke-width:3;stroke:black'/>')), // tile 1
+            string(abi.encodePacked('<rect x='0' y='100' width='100' height='100' style='fill:',palette[toUint8(bhash,1)/51],';stroke-width:3;stroke:black'/>')), // tile 2
+            string(abi.encodePacked('<rect x='0' y='200' width='100' height='100' style='fill:',palette[toUint8(bhash,2)/51],';stroke-width:3;stroke:black'/>')), // tile 3
+            string(abi.encodePacked('<rect x='100' y='0' width='100' height='100' style='fill:',palette[toUint8(bhash,3)/51],';stroke-width:3;stroke:black'/>')), // tile 4
+            string(abi.encodePacked('<rect x='100' y='100' width='100' height='100' style='fill:',palette[toUint8(bhash,4)/51],';stroke-width:3;stroke:black'/>')), // tile 5
+            string(abi.encodePacked('<rect x='100' y='200' width='100' height='100' style='fill:',palette[toUint8(bhash,5)/51],';stroke-width:3;stroke:black'/>')), // tile 6
+            string(abi.encodePacked('<rect x='200' y='0' width='100' height='100' style='fill:',palette[toUint8(bhash,6)/51],';stroke-width:3;stroke:black'/>')), // tile 7
+            string(abi.encodePacked('<rect x='200' y='100' width='100' height='100' style='fill:',palette[toUint8(bhash,7)/51],';stroke-width:3;stroke:black'/>')), // tile 8
+            string(abi.encodePacked('<rect x='200' y='200' width='100' height='100' style='fill:',palette[toUint8(bhash,8)/51],';stroke-width:3;stroke:black'/>')), // tile 9
+            '</svg>'
