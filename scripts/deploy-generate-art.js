@@ -4,7 +4,6 @@ async function main(){
     const onChainNFT =await OnchainNFT.deploy();
     await onChainNFT.deployed();
 
-    // console.log("Successfully deployed smart contract to: ", footBall.address().toString());
     await onChainNFT.addManyColorsToPalette(0,[
         "",
         "ffffff",

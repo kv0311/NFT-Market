@@ -147,8 +147,8 @@ library MultiPartRLEToSVG {
         });
 
         uint256 cursor;
-        Rect[] memory rects = new Rect[]((11 - 5) / 2);
-        for (uint256 i = 5; i < 10; i += 2) {
+        Rect[] memory rects = new Rect[]((image.length - 5) / 2);
+        for (uint256 i = 5; i < image.length; i += 2) {
             rects[cursor] = Rect({ length: uint8(image[i]), colorIndex: uint8(image[i + 1]) });
             cursor++;
         }
