@@ -3,17 +3,17 @@ const { ethers } = require("hardhat");
 
 describe("test", function () {
   it("Should return the new greeting once it's changed", async function () {
-    const Greeter = await ethers.getContractFactory("Greeter");
-    const greeter = await Greeter.deploy("Hello, world!");
-    await greeter.deployed();
+    const Draw = await ethers.getContractFactory("Draw");
+    const draw = await Draw.deploy();
+    await draw.deployed();
 
-    expect(await greeter.greet()).to.equal("Hello, world!");
+    expect(await draw.createRect()).to.equal(`<rect width="140" height="10" x="90" y="210" fill="#eed811" />`);
 
-    const setGreetingTx = await greeter.setGreeting("Hola, mundo!");
+    // const setGreetingTx = await greeter.setGreeting("Hola, mundo!");
 
-    // wait until the transaction is mined
-    await setGreetingTx.wait();
+    // // wait until the transaction is mined
+    // await setGreetingTx.wait();
 
-    expect(await greeter.greet()).to.equal("Hola, mundo!");
+    // expect(await greeter.greet()).to.equal("Hola, mundo!");
   });
 });

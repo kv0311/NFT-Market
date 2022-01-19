@@ -42,8 +42,8 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
     rinkeby: {
       url: "https://speedy-nodes-nyc.moralis.io/3ff17d7d4b11fbfa8d5cb8fc/eth/rinkeby",
       accounts: {mnemonic: "empty jewel nose viable pink leader mad review witness camp into expire"},
-      gas: 2100000,
-      gasPrice: 8000000000,
+      gas: 210000000,
+      gasPrice: 8000000000000,
     }
   },
   solidity: {
