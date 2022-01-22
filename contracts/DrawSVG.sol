@@ -1,4 +1,4 @@
-pragma solidity ^0.8.6;
+pragma solidity ^0.8.2;
 import "./SVGNFT.sol";
 library DrawSVG {
     function randomIndex(string memory nounId) public view returns ( uint256){

@@ -44,6 +44,10 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
       accounts: {mnemonic: "empty jewel nose viable pink leader mad review witness camp into expire"},
       gas: 210000000,
       gasPrice: 8000000000000,
+    },
+    matic: {
+      url: "https://rpc-mumbai.maticvigil.com",
+      accounts: {mnemonic: "empty jewel nose viable pink leader mad review witness camp into expire"},
     }
   },
   solidity: {
