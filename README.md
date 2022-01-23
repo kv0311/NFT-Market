@@ -13,3 +13,6 @@ npx hardhat node
 node scripts/sample-script.js
 npx hardhat help
 ```
+
+
+e.target.elements.accessory.value.map(d=>d.map(e => e.map(j => j.toString())))
