@@ -1,22 +1,23 @@
 const {ethers} = require('hardhat');
 async function main(){
     try{
-      // const SVGNFTDraw = await ethers.getContractFactory("DrawSVG");
-      // const svgNFTDraw =await SVGNFTDraw.deploy();
-      // const svgNFTDrawResult = await svgNFTDraw.deployed();
+      // const MultiPartRLEToSVG = await ethers.getContractFactory("MultiPartRLEToSVG");
+      // const multiPartRLEToSVG =await MultiPartRLEToSVG.deploy();
+      // const multiPartRLEToSVGResult = await MultiPartRLEToSVG.deployed();
       
-      const SVGNFT =  await ethers.getContractFactory("SVGNFT", {
+      const SVGNFT =  await ethers.getContractFactory("NFTManagement", {
         libraries: {
-          DrawSVG: "0x5453b7a888ad291137c578ae49cb85e97a3727b9"
+          NFTUtils: "0x76dafa79a44215344dc132f6fc6364071299994a",
+          MultiPartRLEToSVG: "0xde86f7a6e6b97bfe857065e3415ea479de69b9d7"
         },
       });
       const svgNFT =await SVGNFT.deploy();
-      await svgNFT.deployed();
+      let multiPartRLEToSVGResult = await svgNFT.deployed();
     
         // const str1 = await svgNFT.create("123");
         // const str2 = await svgNFT.tokenURI(0);
         // console.log("NFT successfully mint")
-       console.log(svgNFT)
+       console.log(multiPartRLEToSVGResult)
     } catch (err){
         console.log(err)
     }

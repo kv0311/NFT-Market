@@ -17,7 +17,7 @@
 
 pragma solidity ^0.8.6;
 
-contract MultiPartRLEToSVG {
+library MultiPartRLEToSVG {
     struct SVGParams {
         bytes[] parts;
         string background;
@@ -40,23 +40,12 @@ contract MultiPartRLEToSVG {
         ContentBounds bounds;
         Rect[] rects;
     }
-    mapping(uint8 => string[]) public  palettes;
     /**
      * @notice Given RLE image parts and color palettes, merge to generate a single SVG image.
      */
 
-    function addManyColorsToPalette(uint8 paletteIndex, string[] calldata newColors) public {
-        require(palettes[paletteIndex].length + newColors.length <= 256, 'Palettes can only hold 256 colors');
-        for (uint256 i = 0; i < newColors.length; i++) {
-            _addColorToPalette(paletteIndex, newColors[i]);
-        }
-    }
-
-    function _addColorToPalette(uint8 _paletteIndex, string calldata _color) internal {
-        palettes[_paletteIndex].push(_color);
-    }
     
-    function generateSVG(SVGParams memory params)
+    function generateSVG(SVGParams memory params, mapping(uint8 => string[]) storage palettes)
         public
         view
         returns (string memory svg)
