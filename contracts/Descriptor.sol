@@ -8,7 +8,7 @@ import { MultiPartRLEToSVG } from './MultiPartRLEToSVG.sol';
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import { IERC721 } from '@openzeppelin/contracts/token/ERC721/IERC721.sol';
 
-contract Descriptor is ERC721URIStorage, Ownable {
+contract Descriptor is Ownable {
     struct Seed {
         uint48 background;
         uint48 body;
@@ -16,7 +16,6 @@ contract Descriptor is ERC721URIStorage, Ownable {
         uint48 head;
         uint48 glasses;
     }
-    uint256 public tokenCounter;
 
     // Noun Color Palettes (Index => Hex Colors)
     mapping(uint8 => string[]) public  palettes;
@@ -257,9 +256,6 @@ contract Descriptor is ERC721URIStorage, Ownable {
         glasses.push(_glasses);
     }
 
-    constructor() ERC721("SVG NFT", "svgNFT"){
-        tokenCounter = 0;
-    }
 
     
 

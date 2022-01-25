@@ -1,6 +1,10 @@
 require("dotenv");
 
 require("@nomiclabs/hardhat-waffle");
+require("@nomiclabs/hardhat-etherscan");
+require('@nomiclabs/hardhat-ethers');
+
+require('@openzeppelin/hardhat-upgrades');
 require("dotenv")
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
