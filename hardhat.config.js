@@ -33,8 +33,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
     testnet: {
       url: "https://data-seed-prebsc-1-s1.binance.org:8545",
       chainId: 97,
-      gas: 2100000,
-      gasPrice: 8000000000,
+      gasPrice: 20000000000,
       accounts: {mnemonic: "empty jewel nose viable pink leader mad review witness camp into expire"}
     },
     mainnet: {
@@ -50,7 +49,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
       gasPrice: 8000000000000,
     },
     matic: {
-      url: "https://rpc-mumbai.maticvigil.com",
+      url: "https://matic-mumbai.chainstacklabs.com/",
       accounts: {mnemonic: "empty jewel nose viable pink leader mad review witness camp into expire"},
     }
   },
