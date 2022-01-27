@@ -46,7 +46,7 @@ library MultiPartRLEToSVG {
 
     
     function generateSVG(SVGParams memory params, mapping(uint8 => string[]) storage palettes)
-        public
+        internal
         view
         returns (string memory svg)
     {
@@ -138,7 +138,7 @@ library MultiPartRLEToSVG {
     /**
      * @notice Decode a single RLE compressed image into a `DecodedImage`.
      */
-    function _decodeRLEImage(bytes memory image) public pure returns (DecodedImage memory) {
+    function _decodeRLEImage(bytes memory image) internal pure returns (DecodedImage memory) {
         uint8 paletteIndex = uint8(image[0]);
         ContentBounds memory bounds = ContentBounds({
             top: uint8(image[1]),
