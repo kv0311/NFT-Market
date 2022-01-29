@@ -56,7 +56,9 @@ contract AllIn is Ownable, ERC721Checkpointable {
     }
 
 
-
+    function transfer(address _to,uint256 _tokenId) public {
+        _transfer(msg.sender, _to, _tokenId);
+    }
 
     function setMinter() public onlyOwner {
         minter = msg.sender;
@@ -73,7 +75,7 @@ contract AllIn is Ownable, ERC721Checkpointable {
         return _mintTo(minter, _currentNounId++);
     }
     function _mintTo(address to, uint256 nounId) internal returns (uint256) {
-        Seed memory seed = seeds[nounId] = NFTUtils.generateSeed(nounId, descriptor);
+        seeds[nounId] = NFTUtils.generateSeed(nounId, backgroundCount(), bodyCount(), accessoryCount(), headCount(), glassesCount());
 
         _mint(owner(), to, nounId);
         // emit NounCreated(nounId, seed);
@@ -82,38 +84,38 @@ contract AllIn is Ownable, ERC721Checkpointable {
     /* Get SVG */
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
         require(_exists(tokenId), 'NounsToken: URI query for nonexistent token');
-        // return descriptor.tokenURI(tokenId, seeds[tokenId]);
+        return _tokenURI(tokenId, seeds[tokenId]);
     }
 
-function backgroundCount() external view  returns (uint256) {
+    function backgroundCount() internal view  returns (uint256) {
         return backgrounds.length;
     }
 
     /**
      * @notice Get the number of available Noun `bodies`.
      */
-    function bodyCount() external view  returns (uint256) {
+    function bodyCount() internal view  returns (uint256) {
         return bodies.length;
     }
 
     /**
      * @notice Get the number of available Noun `accessories`.
      */
-    function accessoryCount() external view  returns (uint256) {
+    function accessoryCount() internal view  returns (uint256) {
         return accessories.length;
     }
 
     /**
      * @notice Get the number of available Noun `heads`.
      */
-    function headCount() external view  returns (uint256) {
+    function headCount() internal view  returns (uint256) {
         return heads.length;
     }
 
     /**
      * @notice Get the number of available Noun `glasses`.
      */
-    function glassesCount() external view  returns (uint256) {
+    function glassesCount() internal view  returns (uint256) {
         return glasses.length;
     }
 
@@ -325,7 +327,7 @@ function backgroundCount() external view  returns (uint256) {
     }
 
 
-    function tokenURI(uint256 _tokenId, Seed memory seed)
+    function _tokenURI(uint256 _tokenId, Seed memory seed)
         public
         view
         virtual
