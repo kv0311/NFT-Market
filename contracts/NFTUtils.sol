@@ -1,7 +1,9 @@
 pragma solidity ^0.8.6;
+import { INounsSeeder } from  "./interfaces/INounsSeeder.sol";
 import { INounsDescriptor } from './interfaces/INounsDescriptor.sol';
+
 library NFTUtils {
-    function generateSeed(uint256 nounId, INounsDescriptor descriptor) external view returns (INounsDescriptor.Seed memory) {
+    function generateSeed(uint256 nounId, INounsDescriptor descriptor) external view returns (INounsSeeder.Seed memory) {
         uint256 pseudorandomness = uint256(
             keccak256(abi.encodePacked(blockhash(block.number - 1), nounId))
         );
@@ -12,7 +14,7 @@ library NFTUtils {
         uint256 headCount = descriptor.headCount();
         uint256 glassesCount = descriptor.glassesCount();
 
-        return INounsDescriptor.Seed({
+        return INounsSeeder.Seed({
             background: uint48(
                 uint48(pseudorandomness) % backgroundCount
             ),

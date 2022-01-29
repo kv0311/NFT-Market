@@ -16,7 +16,7 @@ async function main() {
   
     const Descriptor = await ethers.getContractFactory("Descriptor",{
       libraries: {
-          MultiPartRLEToSVG: "0x5132CDae2Da9A1c20C4d56074EB239BA6a8Cbd8A"
+          MultiPartRLEToSVG: "0x514e3C210c2dAD92A54c9A448174330f744f9108"
         }});
     const descriptorContract = await Descriptor.deploy(Descriptor);
     // Deploy 100M token

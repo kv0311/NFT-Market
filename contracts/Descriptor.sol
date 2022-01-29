@@ -4,18 +4,14 @@ import "base64-sol/base64.sol";
 import "@openzeppelin/contracts/utils/Strings.sol"; 
 
 import { INounsDescriptor } from './interfaces/INounsDescriptor.sol';
+import { INounsSeeder } from  "./interfaces/INounsSeeder.sol";
+
 import { MultiPartRLEToSVG } from './MultiPartRLEToSVG.sol';
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import { IERC721 } from '@openzeppelin/contracts/token/ERC721/IERC721.sol';
 
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+
 contract Descriptor is Ownable {
-    struct Seed {
-        uint48 background;
-        uint48 body;
-        uint48 accessory;
-        uint48 head;
-        uint48 glasses;
-    }
 
     // Noun Color Palettes (Index => Hex Colors)
     mapping(uint8 => string[]) public  palettes;
@@ -259,7 +255,7 @@ contract Descriptor is Ownable {
 
     
 
-    function buildMetaData(uint256 _tokenId, Seed memory seed, string memory name, string memory description)
+    function buildMetaData(uint256 _tokenId, INounsSeeder.Seed memory seed, string memory name, string memory description)
         public
         view
         returns (string memory)
@@ -282,7 +278,7 @@ contract Descriptor is Ownable {
     }
 
 
-    function tokenURI(uint256 _tokenId, Seed memory seed)
+    function tokenURI(uint256 _tokenId, INounsSeeder.Seed memory seed)
         public
         view
         virtual
@@ -291,7 +287,7 @@ contract Descriptor is Ownable {
         return dataURI(_tokenId, seed);
     }
 
-    function dataURI(uint256 _tokenId, Seed memory seed) public view returns (string memory) {
+    function dataURI(uint256 _tokenId, INounsSeeder.Seed memory seed) public view returns (string memory) {
         string memory tokenId_ = Strings.toString(_tokenId);
         string memory name = string(abi.encodePacked('Rada NFT ', tokenId_));
         string memory description = string(abi.encodePacked('Noun ', tokenId_, ' One of NFT Gallery Of RADA DAO'));
@@ -307,7 +303,7 @@ contract Descriptor is Ownable {
         return Base64.encode(bytes(MultiPartRLEToSVG.generateSVG(params, palettes)));
     }
 
-    function _getPartsForSeed(Seed memory seed) internal view returns (bytes[] memory) {
+    function _getPartsForSeed(INounsSeeder.Seed memory seed) internal view returns (bytes[] memory) {
         bytes[] memory _parts = new bytes[](4);
         _parts[0] = bodies[seed.body];
         _parts[1] = accessories[seed.accessory];

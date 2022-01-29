@@ -5,6 +5,9 @@ import { ERC721Checkpointable } from './base/ERC721Checkpointable.sol';
 import { ERC721 } from './base/ERC721.sol';
 
 import { INounsDescriptor } from './interfaces/INounsDescriptor.sol';
+import { INounsSeeder } from './interfaces/INounsSeeder.sol';
+
+// import './Descriptor.sol';
 // import
 import { NFTUtils } from './NFTUtils.sol';
 
@@ -15,12 +18,21 @@ contract NFTManagement is Ownable, ERC721Checkpointable {
     address public minter;
     address public founder;
     uint256 private _currentNounId;
-    mapping(uint256 => INounsDescriptor.Seed) public seeds;
 
-    constructor() ERC721("SVG NFT", "svgNFT")
+    INounsSeeder public seeder;
+
+    mapping(uint256 => INounsSeeder.Seed) public seeds;
+
+    constructor(
+        address _minter,
+        INounsDescriptor _descriptor,
+        INounsSeeder _seeder
+    ) ERC721("NFT", "svgNFT")
     {
+        minter = _minter;
+        descriptor = _descriptor;
+        seeder = _seeder;
     }
-
     function setMinter() public onlyOwner {
         minter = msg.sender;
     }
@@ -36,7 +48,7 @@ contract NFTManagement is Ownable, ERC721Checkpointable {
         return _mintTo(minter, _currentNounId++);
     }
     function _mintTo(address to, uint256 nounId) internal returns (uint256) {
-        INounsDescriptor.Seed memory seed = seeds[nounId] = NFTUtils.generateSeed(nounId, descriptor);
+        seeds[nounId] = NFTUtils.generateSeed(nounId, descriptor);
 
         _mint(owner(), to, nounId);
         // emit NounCreated(nounId, seed);
