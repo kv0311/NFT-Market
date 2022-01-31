@@ -278,14 +278,14 @@ contract Descriptor is Ownable {
     }
 
 
-    function tokenURI(uint256 _tokenId, INounsSeeder.Seed memory seed)
-        public
-        view
-        virtual
-        returns (string memory)
-    {
-        return dataURI(_tokenId, seed);
-    }
+    // function tokenURI(uint256 _tokenId, INounsSeeder.Seed memory seed)
+    //     public
+    //     view
+    //     virtual
+    //     returns (string memory)
+    // {
+    //     return dataURI(_tokenId, seed);
+    // }
 
     function dataURI(uint256 _tokenId, INounsSeeder.Seed memory seed) public view returns (string memory) {
         string memory tokenId_ = Strings.toString(_tokenId);
